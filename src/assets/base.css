@@ -1,52 +1,42 @@
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
-  --vt-c-white: #ffffff;
-  --vt-c-white-soft: #f8f8f8;
-  --vt-c-white-mute: #f2f2f2;
+  --clr-blue: hsl(220, 98%, 61%);
+  --clr-check: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
 
-  --vt-c-black: #181818;
-  --vt-c-black-soft: #222222;
-  --vt-c-black-mute: #282828;
+  /* light vars */
+  --clr-gray-400: #484b6a;
+  --clr-gray-300: #9393a5;
+  --clr-gray-200: #d2d3db;
+  --clr-gray-100: #e4e5f1;
+  --clr-gray-50: #fafafa;
 
-  --vt-c-indigo: #2c3e50;
-
-  --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
-  --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
-  --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
-  --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
-
-  --vt-c-text-light-1: var(--vt-c-indigo);
-  --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
-  --vt-c-text-dark-1: var(--vt-c-white);
-  --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
+  /* dark vars */
+  --clr-blue-900: #161722;
+  --clr-blue-800: #25273c;
+  --clr-blue-700: #393a4c;
+  --clr-blue-600: #4d5066;
+  --clr-blue-500: #777a92;
+  --clr-blue-200: #cacde8;
+  --clr-blue-100: #e4e5f1;
 }
 
 /* semantic color variables for this project */
 :root {
-  --color-background: var(--vt-c-white);
-  --color-background-soft: var(--vt-c-white-soft);
-  --color-background-mute: var(--vt-c-white-mute);
+  --color-background: var(--clr-gray-50);
+  --color-todo-background: white;
+  --color-text: var(--clr-gray-400);
+  --color-text-hover: var(--clr-gray-400);
 
-  --color-border: var(--vt-c-divider-light-2);
-  --color-border-hover: var(--vt-c-divider-light-1);
-
-  --color-heading: var(--vt-c-text-light-1);
-  --color-text: var(--vt-c-text-light-1);
-
-  --section-gap: 160px;
+  --color-border: #e3e4f1;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-background: var(--vt-c-black);
-    --color-background-soft: var(--vt-c-black-soft);
-    --color-background-mute: var(--vt-c-black-mute);
+    --color-background: var(--clr-blue-900);
+    --color-todo-background: var(--clr-blue-800);
+    --color-text: var(--clr-blue-200);
 
-    --color-border: var(--vt-c-divider-dark-2);
-    --color-border-hover: var(--vt-c-divider-dark-1);
-
-    --color-heading: var(--vt-c-text-dark-1);
-    --color-text: var(--vt-c-text-dark-2);
+    --color-border: var(--clr-blue-700);
   }
 }
 
@@ -59,6 +49,7 @@
 }
 
 body {
+  font-family: 'Josefin Sans', sans-serif;
   min-height: 100vh;
   color: var(--color-text);
   background: var(--color-background);
@@ -66,20 +57,8 @@ body {
     color 0.5s,
     background-color 0.5s;
   line-height: 1.6;
-  font-family:
-    Inter,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    'Fira Sans',
-    'Droid Sans',
-    'Helvetica Neue',
-    sans-serif;
-  font-size: 15px;
+
+  font-size: 18px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
