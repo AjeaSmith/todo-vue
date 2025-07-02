@@ -4,6 +4,8 @@
   --clr-check: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
 
   /* light vars */
+  --bg-mobile-light: url('/images/bg-mobile-light.jpg');
+  --bg-desktop-light: url('/images/bg-desktop-light.jpg');
   --clr-gray-400: #484b6a;
   --clr-gray-300: #9393a5;
   --clr-gray-200: #d2d3db;
@@ -11,6 +13,8 @@
   --clr-gray-50: #fafafa;
 
   /* dark vars */
+  --bg-mobile-dark: url('/images/bg-mobile-dark.jpg');
+  --bg-desktop-dark: url('/images/bg-desktop-dark.jpg');
   --clr-blue-900: #161722;
   --clr-blue-800: #25273c;
   --clr-blue-700: #393a4c;
@@ -18,10 +22,10 @@
   --clr-blue-500: #777a92;
   --clr-blue-200: #cacde8;
   --clr-blue-100: #e4e5f1;
-}
 
-/* semantic color variables for this project */
-:root {
+  /* light theme */
+  --bg-mobile: var(--bg-mobile-light);
+  --bg-desktop: var(--bg-desktop-light);
   --color-background: var(--clr-gray-50);
   --color-todo-background: white;
   --color-text: var(--clr-gray-400);
@@ -29,16 +33,28 @@
 
   --color-border: #e3e4f1;
 }
+/* dark theme */
+[data-theme='dark'] {
+  --bg-mobile: var(--bg-mobile-dark);
+  --bg-desktop: var(--bg-desktop-dark);
+  --color-background: var(--clr-blue-900);
+  --color-todo-background: var(--clr-blue-800);
+  --color-text: var(--clr-blue-200);
 
-@media (prefers-color-scheme: dark) {
+  --color-border: var(--clr-blue-700);
+}
+
+/* @media (prefers-color-scheme: dark) {
   :root {
+    --bg-mobile: var(--bg-mobile-dark);
+    --bg-desktop: var(--bg-desktop-dark);
     --color-background: var(--clr-blue-900);
     --color-todo-background: var(--clr-blue-800);
     --color-text: var(--clr-blue-200);
 
     --color-border: var(--clr-blue-700);
   }
-}
+} */
 
 *,
 *::before,
@@ -52,7 +68,7 @@ body {
   font-family: 'Josefin Sans', sans-serif;
   min-height: 100vh;
   color: var(--color-text);
-  background: var(--color-background);
+  background-color: var(--color-background);
   transition:
     color 0.5s,
     background-color 0.5s;
