@@ -17,25 +17,26 @@ import TodoApp from './components/TodoApp.vue'
 
 <style scoped>
 .main-bg {
-  position: relative;
-  height: 12.5rem;
   background: var(--bg-mobile) no-repeat;
   background-position: top;
   background-size: cover;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 .main-wrapper {
+  z-index: 100;
   width: 100%;
   max-width: 33.813rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin: 0 auto;
+  padding: 0 1rem;
 
   header {
+    margin-bottom: 2.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     h1 {
       font-weight: bold;
       color: white;
