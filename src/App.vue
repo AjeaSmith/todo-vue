@@ -17,22 +17,22 @@ import TodoApp from './components/TodoApp.vue'
 
 <style scoped>
 .main-bg {
+  height: 12.5rem;
   background: var(--bg-mobile) no-repeat;
   background-position: top;
   background-size: cover;
-  padding-top: 4rem;
+  padding-top: 2rem;
   padding-bottom: 4rem;
 }
 
 .main-wrapper {
-  z-index: 100;
   width: 100%;
   max-width: 33.813rem;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
 
   header {
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -52,6 +52,9 @@ import TodoApp from './components/TodoApp.vue'
     background-position: center;
     background-size: cover;
     height: 18.75rem;
+  }
+  .main-wrapper {
+    padding: 4rem 0;
   }
 }
 </style>
