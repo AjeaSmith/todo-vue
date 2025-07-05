@@ -7,7 +7,11 @@
       :class="{ completed: todo.done }"
     >
       <label class="checkbox-wrapper">
-        <input type="checkbox" class="checkbox-input-hidden" />
+        <input
+          type="checkbox"
+          class="checkbox-input-hidden"
+          @click="store.markAsComplete(todo.id)"
+        />
         <div class="checkbox-gradient" />
         <p class="todo">{{ todo.text }}</p>
       </label>
@@ -19,9 +23,14 @@
 </template>
 
 <script setup>
+import { watch } from 'vue'
 import IconCross from './icons/IconCross.vue'
 import { useTodoStore } from '@/stores/todo'
 const store = useTodoStore()
+
+watch(store.todos, (oldvalue, newTodo) => {
+  console.log(newTodo)
+})
 </script>
 
 <style scoped>

@@ -15,10 +15,19 @@ export const useTodoStore = defineStore('todo', () => {
 
   // Actions
   function addTodo(text: string) {
-    todos.value.push({ id: todos.value.length + 1, text, done: false })
+    // unshift - shows newest todos on top
+    todos.value.unshift({ id: todos.value.length + 1, text, done: false })
   }
   function deleteTodo(todoId: number) {
     todos.value = todos.value.filter((todo) => todo.id !== todoId)
   }
-  return { todos, addTodo, deleteTodo }
+  function markAsComplete(todoId: number) {
+    const todo = todos.value.find((todo) => todo.id === todoId)
+    if (todo.done) {
+      todo.done = false
+    } else {
+      todo.done = true
+    }
+  }
+  return { todos, addTodo, deleteTodo, markAsComplete }
 })
