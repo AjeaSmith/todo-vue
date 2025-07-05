@@ -31,6 +31,7 @@
   --color-text-hover: var(--clr-gray-400);
   --color-strikethrough: var(--clr-gray-200);
   --color-border: #e3e4f1;
+  --color-delete: var(--clr-gray-400);
 }
 /* dark theme */
 [data-theme='dark'] {
@@ -41,6 +42,7 @@
   --color-text: var(--clr-blue-200);
   --color-strikethrough: var(--clr-blue-600);
   --color-border: var(--clr-blue-700);
+  --color-delete: #707394;
 }
 
 *,
@@ -53,14 +55,12 @@
 
 body {
   font-family: 'Josefin Sans', sans-serif;
-  min-height: 100vh;
   color: var(--color-text);
   background-color: var(--color-background);
   transition:
     color 0.5s,
     background-color 0.5s;
   line-height: 1.6;
-
   font-size: 18px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
