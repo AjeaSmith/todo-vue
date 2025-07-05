@@ -7,7 +7,10 @@ interface Todo {
 }
 export const useTodoStore = defineStore('todo', () => {
   // State
-  const todos = ref<Todo[]>([])
+  const todos = ref<Todo[]>([
+    { text: 'wash dishes', done: false },
+    { text: 'clean room', done: false },
+  ])
 
   // Actions
   function addTodo(text: string) {

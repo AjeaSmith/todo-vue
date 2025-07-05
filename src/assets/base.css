@@ -1,7 +1,6 @@
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
   --clr-blue: hsl(220, 98%, 61%);
-  --clr-check: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
 
   /* light vars */
   --bg-mobile-light: url('/images/bg-mobile-light.jpg');
@@ -30,7 +29,7 @@
   --color-todo-background: white;
   --color-text: var(--clr-gray-400);
   --color-text-hover: var(--clr-gray-400);
-
+  --color-strikethrough: var(--clr-gray-200);
   --color-border: #e3e4f1;
 }
 /* dark theme */
@@ -40,21 +39,9 @@
   --color-background: var(--clr-blue-900);
   --color-todo-background: var(--clr-blue-800);
   --color-text: var(--clr-blue-200);
-
+  --color-strikethrough: var(--clr-blue-600);
   --color-border: var(--clr-blue-700);
 }
-
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --bg-mobile: var(--bg-mobile-dark);
-    --bg-desktop: var(--bg-desktop-dark);
-    --color-background: var(--clr-blue-900);
-    --color-todo-background: var(--clr-blue-800);
-    --color-text: var(--clr-blue-200);
-
-    --color-border: var(--clr-blue-700);
-  }
-} */
 
 *,
 *::before,
