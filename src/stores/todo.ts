@@ -14,7 +14,7 @@ export const useTodoStore = defineStore(
 
     const filter = ref('all')
 
-    // Computed
+    // ----- Computed ------
     const activeTodos = computed(() => {
       return todos.value.filter((todo) => !todo.done)
     })
@@ -26,9 +26,8 @@ export const useTodoStore = defineStore(
       return todos.value
     })
 
-    // Actions
+    // ---- Actions ----
     function addTodo(text: string) {
-      // unshift - shows newest todos on top
       todos.value.unshift({ id: todos.value.length + 1, text, done: false })
     }
     function deleteTodo(todoId: number) {
@@ -45,6 +44,11 @@ export const useTodoStore = defineStore(
     function clearCompletedTodos() {
       todos.value = todos.value.filter((todo) => !todo.done)
     }
+    function shouldShow(todo: Todo) {
+      if (filter.value === 'all') return true
+      if (filter.value === 'active') return !todo.done
+      if (filter.value === 'completed') return todo.done
+    }
     return {
       todos,
       addTodo,
@@ -54,6 +58,7 @@ export const useTodoStore = defineStore(
       filterTodos,
       activeTodos,
       clearCompletedTodos,
+      shouldShow,
     }
   },
   {

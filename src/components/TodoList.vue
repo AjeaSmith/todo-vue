@@ -1,38 +1,32 @@
 <template>
-  <ul>
-    <li
-      class="todo-item"
-      v-for="todo in store.filterTodos"
-      :key="todo.id"
-      :class="{ completed: todo.done }"
-    >
-      <label class="checkbox-wrapper">
-        <input
-          type="checkbox"
-          class="checkbox-input-hidden"
-          @click="store.markAsComplete(todo.id)"
-        />
-        <div class="checkbox-gradient" />
-        <p class="todo">{{ todo.text }}</p>
-      </label>
-      <button class="todo-delete" type="button" @click="store.deleteTodo(todo.id)">
-        <IconCross />
-      </button>
-    </li>
-    <FilterList />
-  </ul>
+  <draggable v-model="store.todos" item-key="id" tag="ul">
+    <template #item="{ element: todo }">
+      <li v-if="store.shouldShow(todo)" class="todo-item" :class="{ completed: todo.done }">
+        <label class="checkbox-wrapper">
+          <input
+            type="checkbox"
+            class="checkbox-input-hidden"
+            @click="store.markAsComplete(todo.id)"
+          />
+          <div class="checkbox-gradient" />
+          <p class="todo">{{ todo.text }}</p>
+        </label>
+        <button class="todo-delete" type="button" @click="store.deleteTodo(todo.id)">
+          <IconCross />
+        </button>
+      </li>
+    </template>
+  </draggable>
+
+  <FilterList />
 </template>
 
 <script setup>
-import { watch } from 'vue'
+import draggable from 'vuedraggable'
 import IconCross from './icons/IconCross.vue'
 import { useTodoStore } from '@/stores/todo'
 import FilterList from './FilterList.vue'
 const store = useTodoStore()
-
-watch(store.filterTodos, (oldvalue, newTodo) => {
-  console.log(newTodo)
-})
 </script>
 
 <style>
@@ -41,7 +35,8 @@ ul {
   background-color: var(--color-todo-background);
   list-style: none;
   padding: 0;
-  border-radius: 8px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
   transition:
     color 0.5s,
     background-color 0.5s;
@@ -103,9 +98,6 @@ ul {
     border-bottom: 1.4px solid var(--color-border);
     transition: border 0.5s;
     position: relative;
-  }
-  .todo-item:last-child {
-    border-bottom: 0;
   }
 
   .todo-item:hover .checkbox-gradient {
