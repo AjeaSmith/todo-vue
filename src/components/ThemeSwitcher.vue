@@ -7,7 +7,7 @@ const { currentTheme, toggleTheme } = useTheme()
 </script>
 
 <template>
-  <button @click="toggleTheme">
+  <button @click="toggleTheme" type="button">
     <IconMoon v-if="currentTheme === 'light'" />
     <IconSun v-else />
   </button>

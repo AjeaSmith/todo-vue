@@ -11,7 +11,7 @@
           <div class="checkbox-gradient" />
           <p class="todo">{{ todo.text }}</p>
         </label>
-        <button class="todo-delete" type="button" @click="store.deleteTodo(todo.id)">
+        <button aria-label="Delete item" class="todo-delete" type="button" @click="store.deleteTodo(todo.id)">
           <IconCross />
         </button>
       </li>
