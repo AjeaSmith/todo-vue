@@ -11,11 +11,18 @@ import TodoApp from './components/TodoApp.vue'
         <ThemeSwitcher />
       </header>
       <TodoApp />
+      <p class="helper-text">Drag and drop to reorder list</p>
     </div>
   </div>
 </template>
 
 <style>
+.helper-text {
+  font-size: 14px;
+  color: #9495a5;
+  margin-top: 50px;
+  text-align: center;
+}
 .main-bg {
   height: 12.5rem;
   background: var(--bg-mobile) no-repeat;
