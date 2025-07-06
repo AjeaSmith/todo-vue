@@ -21,6 +21,7 @@ const todoText = ref('')
 const store = useTodoStore()
 
 function handleSubmit() {
+  if (!todoText.value) return
   store.addTodo(todoText.value)
   todoText.value = ''
 }

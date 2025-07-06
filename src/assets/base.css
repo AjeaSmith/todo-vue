@@ -32,6 +32,9 @@
   --color-strikethrough: var(--clr-gray-200);
   --color-border: #e3e4f1;
   --color-delete: var(--clr-gray-400);
+
+  --color-filter-text: #9495a5;
+  --color-filter-hover: #494c6b;
 }
 /* dark theme */
 [data-theme='dark'] {
@@ -43,6 +46,9 @@
   --color-strikethrough: var(--clr-blue-600);
   --color-border: var(--clr-blue-700);
   --color-delete: #707394;
+
+  --color-filter-text: #5b5e7e;
+  --color-filter-hover: var(--clr-gray-100);
 }
 
 *,
@@ -65,4 +71,8 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  font-family: 'Josefin Sans', sans-serif;
 }

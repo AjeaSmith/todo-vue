@@ -1,8 +1,8 @@
 <template>
-  <ul class="todo-list">
+  <ul>
     <li
       class="todo-item"
-      v-for="todo in store.todos"
+      v-for="todo in store.filterTodos"
       :key="todo.id"
       :class="{ completed: todo.done }"
     >
@@ -19,6 +19,7 @@
         <IconCross />
       </button>
     </li>
+    <FilterList />
   </ul>
 </template>
 
@@ -26,29 +27,28 @@
 import { watch } from 'vue'
 import IconCross from './icons/IconCross.vue'
 import { useTodoStore } from '@/stores/todo'
+import FilterList from './FilterList.vue'
 const store = useTodoStore()
 
-watch(store.todos, (oldvalue, newTodo) => {
+watch(store.filterTodos, (oldvalue, newTodo) => {
   console.log(newTodo)
 })
 </script>
 
-<style scoped>
+<style>
 ul {
-  list-style: none;
-  padding: 0;
-}
-.todo-list {
-  box-shadow:
-    0 10px 15px rgba(0, 0, 0, 0.1),
-    0 4px 6px rgba(0, 0, 0, 0.05);
-  margin-top: 1.5rem;
   color: var(--color-text);
   background-color: var(--color-todo-background);
+  list-style: none;
+  padding: 0;
   border-radius: 8px;
   transition:
     color 0.5s,
     background-color 0.5s;
+  box-shadow:
+    0 10px 15px rgba(0, 0, 0, 0.1),
+    0 4px 6px rgba(0, 0, 0, 0.05);
+  margin-top: 1.5rem;
 
   .checkbox-wrapper {
     cursor: pointer;
@@ -77,7 +77,8 @@ ul {
       border 0.5s;
   }
 
-  .checkbox-input-hidden:checked + .checkbox-gradient {
+  .checkbox-input-hidden:checked + .checkbox-gradient,
+  .todo-item.completed .checkbox-gradient {
     border: none;
     background:
       url('/images/icon-check.svg'),
@@ -86,7 +87,8 @@ ul {
     background-position: center;
   }
 
-  .checkbox-input-hidden:checked ~ .todo {
+  .checkbox-input-hidden:checked ~ .todo,
+  .todo-item.completed .todo {
     text-decoration: line-through;
     color: var(--color-strikethrough);
   }
@@ -102,7 +104,6 @@ ul {
     transition: border 0.5s;
     position: relative;
   }
-
   .todo-item:last-child {
     border-bottom: 0;
   }
@@ -112,6 +113,11 @@ ul {
     border-radius: 50%;
     display: inline-block;
   }
+
+  .todo-item:hover .checkbox-input-hidden:checked + .checkbox-gradient {
+    border: none;
+  }
+
   .todo-item:hover .todo-delete {
     display: block;
   }
@@ -120,11 +126,6 @@ ul {
     color: var(--color-text);
     transition: color 0.5s;
   }
-
-  /* .todo-item.completed .todo {
-    text-decoration: line-through;
-    color: var(--color-strikethrough);
-  } */
 
   .todo-delete {
     display: none;
