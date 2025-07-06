@@ -1,11 +1,11 @@
 <script setup>
-import Search from './Search.vue'
+import CreateTodo from './CreateTodo.vue'
 import TodoList from './TodoList.vue'
 </script>
 
 <template>
   <section>
-    <Search />
+    <CreateTodo />
     <TodoList />
   </section>
 </template>

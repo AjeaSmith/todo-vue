@@ -3,6 +3,7 @@
     <div class="form-item">
       <div class="circle" />
       <input
+        autocomplete="off"
         v-model="todoText"
         type="text"
         name="todo"
