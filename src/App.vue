@@ -15,7 +15,7 @@ import TodoApp from './components/TodoApp.vue'
   </div>
 </template>
 
-<style scoped>
+<style>
 .main-bg {
   height: 12.5rem;
   background: var(--bg-mobile) no-repeat;

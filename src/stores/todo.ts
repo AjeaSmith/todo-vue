@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 interface Todo {
   id: number
@@ -12,6 +12,20 @@ export const useTodoStore = defineStore('todo', () => {
     { id: 1, text: 'wash dishes', done: false },
     { id: 2, text: 'clean room', done: false },
   ])
+
+  const filter = ref('all')
+
+  // Computed
+  const activeTodos = computed(() => {
+    return todos.value.filter((todo) => !todo.done)
+  })
+
+  const filterTodos = computed(() => {
+    if (filter.value === 'active') return todos.value.filter((todo) => !todo.done)
+    if (filter.value === 'completed') return todos.value.filter((todo) => todo.done)
+
+    return todos.value
+  })
 
   // Actions
   function addTodo(text: string) {
@@ -29,5 +43,17 @@ export const useTodoStore = defineStore('todo', () => {
       todo.done = true
     }
   }
-  return { todos, addTodo, deleteTodo, markAsComplete }
+  function clearCompletedTodos() {
+    todos.value = todos.value.filter((todo) => !todo.done)
+  }
+  return {
+    todos,
+    addTodo,
+    deleteTodo,
+    markAsComplete,
+    filter,
+    filterTodos,
+    activeTodos,
+    clearCompletedTodos,
+  }
 })
