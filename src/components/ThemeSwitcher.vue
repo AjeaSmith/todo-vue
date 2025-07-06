@@ -7,7 +7,7 @@ const { currentTheme, toggleTheme } = useTheme()
 </script>
 
 <template>
-  <button @click="toggleTheme" type="button">
+  <button @click="toggleTheme" type="button" aria-label="Switch Theme">
     <IconMoon v-if="currentTheme === 'light'" />
     <IconSun v-else />
   </button>
